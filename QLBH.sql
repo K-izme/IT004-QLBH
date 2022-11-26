@@ -1,4 +1,4 @@
-IF DB_IB('QLBH') is not null
+IF DB_ID('QLBH') is not null
 drop database QLBH
 
 CREATE DATABASE QLBH
@@ -374,11 +374,11 @@ select distinct HOTEN
 from KHACHHANG, HOADON
 WHERE 
 	HOADON.MAKH = KHACHHANG.MAKH
-	AND YEAR(NgHD) = 2006
-	AND TriGia = 
+	AND YEAR(NGHD) = 2006
+	AND TriGia >= all 
         (
-        SELECT MAX(TriGia) 
-        FROM HoaDon WHERE YEAR(NgHD) = 2006
+        SELECT TRIGIA 
+        FROM HoaDon WHERE YEAR(NGHD) = 2006
         )
 -- Cau 27
 select top 3 MAKH, HOTEN
